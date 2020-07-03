@@ -23,6 +23,8 @@ html {
     'image image'
     'doug mabel';
 
+    max-width: calc(100vw - 24px);
+
     .names {
       font-size: 48px;
       font-family: 'Nothing You Could Do', cursive;
@@ -33,6 +35,10 @@ html {
 
     .image {
       grid-area: image;
+
+      img {
+        width: 100%;
+      }
     }
 
     .doug, .mabel {

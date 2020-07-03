@@ -1,45 +1,72 @@
-@import url('https://fonts.googleapis.com/css2?family=Coming+Soon&family=Nothing+You+Could+Do&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Coming+Soon&family=Nothing+You+Could+Do&display=swap");
+
+$surface-padding: 16px;
 
 html {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Coming Soon', sans-serif;
-  font-size: 24px;
+  * { box-sizing: border-box; }
+
+  font-family: "Coming Soon", sans-serif;
+  font-size: 18px;
   background: url("/img/background.jpg") no-repeat center center fixed;
   background-size: cover;
-  min-height: 100%;
-  min-width: 100%;
 
-  .wrapper {
+  .surface {
+    position: relative;
+    margin: 12px;
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(5px);
-    margin: 12px;
+    overflow: hidden;
 
-    display: grid;
-    grid-template:
-    'names names'
-    'image image'
-    'doug mabel';
+    img { width: 100%; }
 
-    max-width: calc(100vw - 24px);
+    .text {
+      padding: 8px 16px;
+
+      &:first-child {
+        padding-top: 16px;
+      }
+
+      &:last-child {
+        padding-bottom: 16px;
+      }
+    }
+
+    img + .text { padding-top: 8px; }
+
+    .footer {
+      font-size: small;
+      padding: 8px 16px 16px;
+    }
+  }
+
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: calc(100vh - 100px);
+    min-width: 100%;
+
+    .surface {
+      display: grid;
+      grid-template:
+        "names names"
+        "image image"
+        "doug mabel";
+
+      max-width: calc(100vw - 24px);
+    }
 
     .names {
       font-size: 48px;
-      font-family: 'Nothing You Could Do', cursive;
+      font-family: "Nothing You Could Do", cursive;
       padding: 20px;
       grid-area: names;
       text-align: center;
     }
 
-    .image {
-      grid-area: image;
-
-      img {
-        width: 100%;
-      }
-    }
+    img { grid-area: image; }
 
     .doug, .mabel {
       padding: 20px;
@@ -48,6 +75,36 @@ html {
       .dates {
         padding-top: 8px;
         font-size: 14px;
+      }
+    }
+  }
+
+  main {
+    max-width: 1200px;
+    margin: auto;
+
+    .tile {
+      display: inline-block;
+      float: left;
+
+      &.sm, &.md, &.lg { width: 100%; }
+
+      @media (min-width: 576px) {
+        &.sm { width: 100%; }
+        &.md { width: 100%; }
+        &.lg { width: 100%; }
+      }
+
+      @media (min-width: 768px) {
+        &.sm { width: 50%; }
+        &.md { width: 50%; }
+        &.lg { width: 100%; }
+      }
+
+      @media (min-width: 992px) {
+        &.sm { width: 25%; }
+        &.md { width: 50%; }
+        &.lg { width: 100%; }
       }
     }
   }

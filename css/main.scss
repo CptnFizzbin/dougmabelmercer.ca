@@ -87,11 +87,13 @@ html {
 
     max-width: 1200px;
     margin: auto;
-    columns: 49vw;
+    columns: 1 auto;
     column-gap: 0;
 
     .tile {
       display: inline-block;
     }
+
+    @media (min-width: 600px) { column-count: 2; }
   }
 }

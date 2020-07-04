@@ -18,7 +18,10 @@ html {
     backdrop-filter: blur(5px);
     overflow: hidden;
 
-    img { width: 100%; }
+    img {
+      display: block;
+      width: 100%;
+    }
 
     .text {
       padding: 8px 16px;

@@ -1,7 +1,7 @@
 {
   "name": "dougmabelmercer.ca",
   "description": "",
-  "license": "",
+  "license": "MIT",
   "author": "",
   "scripts": {
     "build": "parcel build index.html",

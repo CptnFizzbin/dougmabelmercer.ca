@@ -17,6 +17,13 @@ html {
     backdrop-filter: blur(5px);
     overflow: hidden;
 
+    .header {
+      font-family: "Nothing You Could Do", cursive;
+      font-size: 28px;
+      padding: 16px 16px 0;
+      text-align: center;
+    }
+
     img {
       display: block;
       width: 100%;
@@ -24,6 +31,7 @@ html {
 
     .text {
       padding: 8px 16px;
+      line-height: 1.5;
 
       &:first-child {
         padding-top: 16px;
@@ -51,6 +59,7 @@ html {
     min-width: 100%;
 
     .surface {
+      margin: 16px;
       display: grid;
       grid-template:
         "names names"
@@ -82,7 +91,6 @@ html {
   }
 
   main {
-    line-height: 1.5em;
     max-width: 1200px;
     margin: auto;
 
@@ -100,7 +108,7 @@ html {
       width: 50%;
       padding: 16px;
 
-      @media (max-width: 600px) { width: 100%; }
+      @media (max-width: 900px) { width: 100%; }
     }
 
     .surface {
@@ -127,8 +135,8 @@ html {
 
     .surface { margin: 16px; }
 
-    @media (min-width: 600px) { column-count: 2; }
-    @media (min-width: 800px) { column-count: 3; }
-    @media (min-width: 1000px) { column-count: 4; }
+    @media (min-width: 800px) { column-count: 2; }
+    @media (min-width: 1000px) { column-count: 3; }
+    @media (min-width: 1200px) { column-count: 4; }
   }
 }

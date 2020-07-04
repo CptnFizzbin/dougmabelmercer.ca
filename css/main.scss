@@ -12,7 +12,6 @@ html {
 
   .surface {
     position: relative;
-    margin: 12px;
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(5px);
@@ -84,16 +83,52 @@ html {
 
   main {
     line-height: 1.5em;
-
     max-width: 1200px;
     margin: auto;
+
+    .surface {
+      display: inline-block;
+    }
+  }
+
+  .obituaries {
+    display: flex;
+    flex-wrap: wrap;
+
+    .obituary {
+      display: inline-block;
+      width: 50%;
+      padding: 16px;
+
+      @media (max-width: 600px) { width: 100%; }
+    }
+
+    .surface {
+      width: 100%;
+      margin: 0;
+
+      .image {
+        display: flex;
+        justify-content: center;
+
+        img {
+          display: block;
+          margin: 16px;
+          width: 100%;
+          max-width: 250px;
+        }
+      }
+    }
+  }
+
+  .comments {
     columns: 1 auto;
     column-gap: 0;
 
-    .tile {
-      display: inline-block;
-    }
+    .surface { margin: 16px; }
 
     @media (min-width: 600px) { column-count: 2; }
+    @media (min-width: 800px) { column-count: 3; }
+    @media (min-width: 1000px) { column-count: 4; }
   }
 }

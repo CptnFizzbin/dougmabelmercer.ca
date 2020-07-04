@@ -1,0 +1,39 @@
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: calc(100vh - 100px);
+  min-width: 100%;
+
+  .surface {
+    margin: 16px;
+    display: grid;
+    grid-template:
+        "names names"
+        "image image"
+        "doug mabel";
+
+    max-width: calc(100vw - 24px);
+  }
+
+  .names {
+    font-size: 48px;
+    font-family: "Nothing You Could Do", cursive;
+    padding: 20px;
+    grid-area: names;
+    text-align: center;
+  }
+
+  img { grid-area: image; }
+
+  .doug, .mabel {
+    padding: 20px;
+    text-align: center;
+
+    .dates {
+      padding-top: 8px;
+      font-size: 14px;
+    }
+  }
+}

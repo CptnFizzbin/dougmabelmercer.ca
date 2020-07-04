@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Coming+Soon&family=Nothing+You+Could+Do&display=swap");
+
+html {
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: "Coming Soon", sans-serif;
+    font-size: 18px;
+    background: url("/img/background.jpg") no-repeat center center fixed;
+    background-size: cover;
+  }
+
+  .surface {
+    position: relative;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    overflow: hidden;
+
+    .header {
+      font-family: "Nothing You Could Do", cursive;
+      font-size: 28px;
+      padding: 16px 16px 0;
+      text-align: center;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    .text {
+      padding: 8px 16px;
+      line-height: 1.5;
+
+      &:first-child {
+        padding-top: 16px;
+      }
+
+      &:last-child {
+        padding-bottom: 16px;
+      }
+    }
+
+    img + .text { padding-top: 8px; }
+
+    .footer {
+      font-size: small;
+      padding: 8px 16px 16px;
+    }
+  }
+}

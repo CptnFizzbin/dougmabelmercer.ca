@@ -1,11 +1,17 @@
 import React from 'react';
-import './App.scss';
+
 import Header from "./Header";
+import Obituaries from "./obituaries/Obituaries";
+
+import './App.scss';
 
 function App() {
   return (
     <div className="App">
       <Header/>
+      <main>
+        <Obituaries/>
+      </main>
     </div>
   );
 }

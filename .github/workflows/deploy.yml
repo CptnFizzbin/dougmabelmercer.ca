@@ -17,7 +17,7 @@ jobs:
         uses: appleboy/ssh-action@v0.1.2
         with:
           username: ${{ secrets.PROD_USER }}
-          ssh_key: ${{ secrets.PROD_KEY }}
+          key: ${{ secrets.PROD_KEY }}
           host: dougmabelmercer.ca
           port: 22
           envs: ROOT_DIR
@@ -36,7 +36,7 @@ jobs:
       uses: appleboy/ssh-action@v0.1.2
       with:
         username: ${{ secrets.PROD_USER }}
-        ssh_key: ${{ secrets.PROD_KEY }}
+        key: ${{ secrets.PROD_KEY }}
         host: dougmabelmercer.ca
         port: 22
         envs: ROOT_DIR
@@ -55,7 +55,7 @@ jobs:
         uses: appleboy/ssh-action@v0.1.2
         with:
           username: ${{ secrets.PROD_USER }}
-          ssh_key: ${{ secrets.PROD_KEY }}
+          key: ${{ secrets.PROD_KEY }}
           host: dougmabelmercer.ca
           port: 22
           envs: ROOT_DIR

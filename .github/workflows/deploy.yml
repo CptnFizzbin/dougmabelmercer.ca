@@ -6,10 +6,6 @@ on:
 
 env:
   ROOT_DIR: ${{ secrets.PROD_PATH }}
-  username: ${{ secrets.PROD_USER }}
-  ssh_key: ${{ secrets.PROD_KEY }}
-  host: dougmabelmercer.ca
-  port: 22
 
 jobs:
   update-code:
@@ -20,10 +16,10 @@ jobs:
       - name: Update Code
         uses: appleboy/ssh-action@v0.1.2
         with:
-          host: ${{ host }}
-          port: ${{ port }}
-          username: ${{ username }}
-          key: ${{ key }}
+          username: ${{ secrets.PROD_USER }}
+          ssh_key: ${{ secrets.PROD_KEY }}
+          host: dougmabelmercer.ca
+          port: 22
           envs: ROOT_DIR
           script_stop: true
           script: |
@@ -39,10 +35,10 @@ jobs:
     - name: Deploy Server
       uses: appleboy/ssh-action@v0.1.2
       with:
-        host: ${{ host }}
-        port: ${{ port }}
-        username: ${{ username }}
-        key: ${{ key }}
+        username: ${{ secrets.PROD_USER }}
+        ssh_key: ${{ secrets.PROD_KEY }}
+        host: dougmabelmercer.ca
+        port: 22
         envs: ROOT_DIR
         script_stop: true
         script: |
@@ -58,10 +54,10 @@ jobs:
       - name: Deploy Client
         uses: appleboy/ssh-action@v0.1.2
         with:
-          host: ${{ host }}
-          port: ${{ port }}
-          username: ${{ username }}
-          key: ${{ key }}
+          username: ${{ secrets.PROD_USER }}
+          ssh_key: ${{ secrets.PROD_KEY }}
+          host: dougmabelmercer.ca
+          port: 22
           envs: ROOT_DIR
           script_stop: true
           script: |

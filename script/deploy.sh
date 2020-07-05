@@ -4,3 +4,4 @@ yarn run build
 
 cd /opt/web-apps/dougmabelmercer.ca/server || exit 1
 yarn install
+pm2 restart dmm-server

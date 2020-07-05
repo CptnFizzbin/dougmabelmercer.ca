@@ -6,4 +6,6 @@ dist
 .cache
 
 client/src/config.js
+
 server/config.js
+server/data/database.sqlite3

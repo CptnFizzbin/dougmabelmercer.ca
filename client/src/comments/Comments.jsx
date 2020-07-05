@@ -25,7 +25,7 @@ const Comment = ({comment}) => {
     <div className="comment">
       <div className="surface">
         {comment.image && <img className="image" src={`${ApiClient.base}/img/${comment.image}`} alt={""}/>}
-        {comment.content.map((paragraph, index) => <div className="text" key={index}>{paragraph}</div>)}
+        {comment.content.split('\n').map((paragraph, index) => <div className="text" key={index}>{paragraph}</div>)}
         <div className="footer">{comment.author}</div>
       </div>
     </div>

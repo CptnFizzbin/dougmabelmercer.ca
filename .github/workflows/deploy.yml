@@ -4,6 +4,13 @@ on:
   push:
     branches: [ master ]
 
+env:
+  ROOT_DIR: ${{ secrets.PROD_PATH }}
+  username: ${{ secrets.PROD_USER }}
+  ssh_key: ${{ secrets.PROD_KEY }}
+  host: dougmabelmercer.ca
+  port: 22
+
 jobs:
   update-code:
     name: Git Update
@@ -13,12 +20,11 @@ jobs:
       - name: Update Code
         uses: appleboy/ssh-action@v0.1.2
         with:
-          host: dougmabelmercer.ca
-          username: ${{ secrets.PROD_USER }}
-          key: ${{ secrets.PROD_KEY }}
-          port: ${{ secrets.PROD_PORT }}
-          env:
-            ROOT_DIR: ${{ secrets.PROD_PATH }}
+          host: ${{ host }}
+          port: ${{ port }}
+          username: ${{ username }}
+          key: ${{ key }}
+          envs: ROOT_DIR
           script_stop: true
           script: |
             cd $ROOT_DIR
@@ -33,19 +39,18 @@ jobs:
     - name: Deploy Server
       uses: appleboy/ssh-action@v0.1.2
       with:
-        host: dougmabelmercer.ca
-        username: ${{ secrets.PROD_USER }}
-        key: ${{ secrets.PROD_KEY }}
-        port: ${{ secrets.PROD_PORT }}
-        env:
-          ROOT_DIR: ${{ secrets.PROD_PATH }}
+        host: ${{ host }}
+        port: ${{ port }}
+        username: ${{ username }}
+        key: ${{ key }}
+        envs: ROOT_DIR
         script_stop: true
         script: |
           cd $ROOT_DIR
           ./script/deploy-server.sh
 
   deploy-client:
-    name: Deploy Server
+    name: Deploy Client
     runs-on: ubuntu-latest
     needs: update-code
 
@@ -53,12 +58,11 @@ jobs:
       - name: Deploy Client
         uses: appleboy/ssh-action@v0.1.2
         with:
-          host: dougmabelmercer.ca
-          username: ${{ secrets.PROD_USER }}
-          key: ${{ secrets.PROD_KEY }}
-          port: ${{ secrets.PROD_PORT }}
-          env:
-            ROOT_DIR: ${{ secrets.PROD_PATH }}
+          host: ${{ host }}
+          port: ${{ port }}
+          username: ${{ username }}
+          key: ${{ key }}
+          envs: ROOT_DIR
           script_stop: true
           script: |
             cd $ROOT_DIR

@@ -15,6 +15,14 @@ class Database {
         });
     }
 
+    async exec(query) {
+        return new Promise((resolve, reject) => {
+            this.conn.exec(query, (err, value) => {
+                err ? reject(err) : resolve(value);
+            })
+        });
+    }
+
     constructor() {
         const dbFile = path.join(config.dataDir, 'database.sqlite3');
         this.conn = new sqlite3.Database(dbFile);
@@ -23,7 +31,7 @@ class Database {
     async seed() {
         const seedFile = path.join(config.dataDir, 'seed.sql');
         const seedSql = readFileSync(seedFile, "utf8");
-        await this.run(seedSql);
+        await this.exec(seedSql);
     }
 
     async getComments() {

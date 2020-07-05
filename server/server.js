@@ -14,13 +14,13 @@ const dataDir = path.join(__dirname, './data/comments');
 const app = express();
 app.use(cors());
 
-app.get('/', (req, res) => res.send('Hello World!'));
+app.get('/api', (req, res) => res.send('Hello World!'));
 
-app.get('/img/:file', (req, res) => {
+app.get('/api/img/:file', (req, res) => {
     res.sendFile(path.join(dataDir, req.params.file));
 });
 
-app.get('/comments', async (req, res, next) => {
+app.get('/api/comments', async (req, res, next) => {
     try {
 
         let files = await readDirPromise(dataDir);

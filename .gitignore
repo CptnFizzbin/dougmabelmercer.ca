@@ -6,3 +6,4 @@ dist
 .cache
 
 client/src/config.js
+server/config.js

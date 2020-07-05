@@ -5,22 +5,18 @@ import path, {dirname} from "path";
 import {fileURLToPath} from "url";
 import cors from 'cors';
 
+import config from "./config.js";
+
 const readDirPromise = promisify(readdir);
 const readFilePromise = promisify(readFile);
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const dataDir = path.join(__dirname, './data/comments');
 
-const app = express();
-app.use(cors());
-
-app.get('/api', (req, res) => res.send('Hello World!'));
-
-app.get('/api/img/:file', (req, res) => {
-    res.sendFile(path.join(dataDir, req.params.file));
-});
-
-app.get('/api/comments', async (req, res, next) => {
+const apiRouter = express.Router();
+apiRouter.get('/', (req, res) => res.send('Hello World!'));
+apiRouter.get('/img/:file', (req, res) => res.sendFile(path.join(dataDir, req.params.file)));
+apiRouter.get('/comments', async (req, res, next) => {
     try {
 
         let files = await readDirPromise(dataDir);
@@ -39,4 +35,10 @@ app.get('/api/comments', async (req, res, next) => {
     }
 });
 
-app.listen(3001, () => console.log(`Example app listening at http://localhost:3001`));
+const app = express();
+app.use(cors());
+app.use(config.prefix, apiRouter);
+app.listen({
+    host: config.host,
+    port: config.port,
+}, () => console.log(`Listening at http://${config.host}:${config.port}`));

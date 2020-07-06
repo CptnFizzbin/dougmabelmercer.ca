@@ -36,8 +36,8 @@ const MabelObituary = () => (
             </div>
             <div className="text">
                 Condolences for the family and In lieu of flowers the family requests donations to the Alzheimer’s
-                Society or the charity of your choice which can be arranged through the funeral home at
-                <a href="https://www.erbgood.com">www.erbgood.com</a> or <a href="tel:519-745-8445">519-745-8445</a>.
+                Society or the charity of your choice which can be arranged through the funeral home
+                at <a href="https://www.erbgood.com">www.erbgood.com</a> or <a href="tel:519-745-8445">519-745-8445</a>.
             </div>
         </div>
     </div>

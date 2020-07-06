@@ -15,6 +15,7 @@ html {
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(5px);
+    width: 100%;
     overflow: hidden;
 
     .header {
@@ -45,7 +46,7 @@ html {
     img + .text { padding-top: 8px; }
 
     .footer {
-      font-size: 12px;
+      font-size: 14px;
       padding: 8px 16px 16px;
     }
   }

@@ -1,5 +1,5 @@
 import sqlite3 from "sqlite3";
-import {readFileSync} from "fs";
+import fs, {readFileSync} from "fs";
 import path from "path";
 
 import config from "./config.js";
@@ -59,12 +59,30 @@ class Database {
     }
 
     async addComment({author, content, image = null}) {
-        const result = await this.run(
-            "INSERT INTO comments (author, content, image) VALUES (?,?,?)",
-            [author, content, image]
-        );
+        try {
+            await this.run('BEGIN');
+            const result = await this.run(
+                "INSERT INTO comments (author, content) VALUES (?,?)",
+                [author.trim(), content.trim()],
+            );
+            const commentId = result.lastID;
 
-        return result.lastID;
+            if (image) {
+                const {ext} = path.parse(image.path);
+                const newFilename = commentId + ext;
+                await fs.promises.copyFile(image.path, path.join(config.dataDir, 'images', newFilename));
+                await this.run(
+                    "UPDATE comments SET image = ? WHERE id = ?",
+                    [newFilename, commentId],
+                );
+            }
+
+            await this.run('COMMIT');
+            return commentId;
+        } catch (error) {
+            await this.run('ROLLBACK');
+            throw(error);
+        }
     }
 }
 

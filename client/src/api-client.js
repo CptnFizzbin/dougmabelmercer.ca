@@ -12,9 +12,14 @@ class ApiClient {
     }
 
     static async putComment({author, content, image = null}) {
+        const formData = new FormData();
+        if (image) formData.append('image', image);
+        if (content) formData.append('content', content);
+        if (author) formData.append('author', author);
+
         const response = await axios.put(
             `${this.base}/comments`,
-            {author, content, image},
+            formData,
         );
         return response.data.comment;
     }

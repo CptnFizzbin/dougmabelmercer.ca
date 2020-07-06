@@ -2,11 +2,14 @@ import express from 'express';
 import path from "path";
 import cors from 'cors';
 import bodyParser from "body-parser";
+import formData from "express-form-data";
 
 import config from "./config.js";
 import Database from "./database.js";
 
 const database = new Database();
+
+const imageTypes = ['image/png', 'image/jpeg', 'image/gif']
 
 const apiRouter = express.Router();
 apiRouter.get('/', (req, res) => res.send('Hello World!'));
@@ -21,15 +24,23 @@ apiRouter.get('/comments', async (req, res, next) => {
 })
 apiRouter.put('/comments', async (req, res, next) => {
     try {
-        const newComment = req.body;
         const errors = {};
 
-        if (newComment.author.trim() === "") {
+        const newComment = req.body;
+        newComment.image = req.files.image;
+
+        if (!newComment.author || newComment.author.trim() === "") {
             errors.author = "Author is required";
         }
 
-        if (newComment.content.trim() === "") {
+        if (!newComment.content || newComment.content.trim() === "") {
             errors.content = "Message is required";
+        }
+
+        if (newComment.image) {
+            if (imageTypes.every((type) => newComment.image.type !== type)) {
+                errors.image = `Image is not a supported format`;
+            }
         }
 
         if (Object.entries(errors).length >= 1) {
@@ -48,6 +59,7 @@ apiRouter.put('/comments', async (req, res, next) => {
 const app = express();
 app.use(cors());
 app.use(bodyParser.json())
+app.use(formData.parse())
 app.use(config.prefix, apiRouter);
 app.listen({
     host: config.host,

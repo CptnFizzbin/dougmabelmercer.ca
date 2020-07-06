@@ -1,0 +1,24 @@
+.add-comment {
+  .surface {
+    width: 100%;
+  }
+
+  textarea,
+  input {
+    font-family: "Coming Soon", sans-serif;
+    font-size: 18px;
+
+    margin: -8px;
+    padding: 8px;
+
+    width: calc(100% + 16px);
+    background: none;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid black;
+  }
+
+  textarea { font-size: 18px }
+
+  input { font-size: 12px }
+}

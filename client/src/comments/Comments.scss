@@ -1,8 +1,7 @@
 .comments {
   columns: 1 auto;
-  column-gap: 0;
-
-  .surface { margin: 16px; }
+  column-gap: 8px;
+  padding: 16px;
 
   @media (min-width: 800px) { column-count: 2; }
   @media (min-width: 1000px) { column-count: 3; }

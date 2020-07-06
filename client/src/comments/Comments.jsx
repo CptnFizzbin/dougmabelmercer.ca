@@ -22,12 +22,12 @@ const Comments = () => {
 
 export default Comments;
 
-const Comment = ({comment}) => {
+export const Comment = ({comment}) => {
     return (
         <div className="comment">
             <div className="surface">
                 {comment.image && <img className="image" src={`${ApiClient.base}/img/${comment.image}`} alt={""}/>}
-                {comment.content.split("\\n").map((paragraph, index) => (
+                {comment.content.split("\n").map((paragraph, index) => (
                     <div className="text" key={index}>{paragraph}</div>
                 ))}
                 <div className="footer">{comment.author}</div>

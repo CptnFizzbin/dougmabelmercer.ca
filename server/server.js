@@ -1,6 +1,7 @@
 import express from 'express';
 import path from "path";
 import cors from 'cors';
+import bodyParser from "body-parser";
 
 import config from "./config.js";
 import Database from "./database.js";
@@ -17,10 +18,20 @@ apiRouter.get('/comments', async (req, res, next) => {
     } catch (error) {
         next(error);
     }
+})
+apiRouter.put('/comments', async (req, res, next) => {
+    try {
+        const commentId = await database.addComment(req.body);
+        const comment = await database.getComment(commentId);
+        res.send({comment});
+    } catch (error) {
+        next(error);
+    }
 });
 
 const app = express();
 app.use(cors());
+app.use(bodyParser.json())
 app.use(config.prefix, apiRouter);
 app.listen({
     host: config.host,

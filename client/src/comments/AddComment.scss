@@ -12,6 +12,9 @@
     padding: 8px;
 
     width: calc(100% + 16px);
+    min-width: calc(100% + 16px);
+    max-width: calc(100% + 16px);
+
     background: none;
     border: none;
     border-radius: 0;
@@ -28,13 +31,13 @@
     padding: 8px;
     margin: -8px;
     border-radius: 8px;
-    background: lightgray;
+    background: rgba(255, 255, 255, 0);
     text-align: center;
 
     transition: background-color 200ms;
 
     &:hover {
-      background: azure;
+      background: rgba(255, 255, 255, 1);
     }
   }
 }

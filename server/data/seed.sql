@@ -31,7 +31,7 @@ VALUES
     (
         'Gloria Rees',
         NULL,
-        "To Doug and family.\nSo sorry to hear of Mabel's passing. May she rest in peace and know the glory of God. An elegant and unique being with a beautiful presence. May you have much joy in her memories. Love from Gloria Rees and family."
+        "To Doug and family. So sorry to hear of Mabel's passing. May she rest in peace and know the glory of God. An elegant and unique being with a beautiful presence. May you have much joy in her memories. Love from Gloria Rees and family."
     ),
     (
         'Susan Wilson',

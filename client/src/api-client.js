@@ -5,8 +5,18 @@ class ApiClient {
     static base = config.serverUrl;
 
     static async getComments() {
-        const comments = await axios.get(`${this.base}/comments`);
-        return comments.data.comments;
+        const response = await axios.get(
+            `${this.base}/comments`,
+        );
+        return response.data.comments;
+    }
+
+    static async putComment({author, content, image = null}) {
+        const response = await axios.put(
+            `${this.base}/comments`,
+            {author, content, image},
+        );
+        return response.data.comment;
     }
 }
 

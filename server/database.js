@@ -51,7 +51,7 @@ class Database {
     }
 
     async getComments() {
-        return this.all("SELECT * FROM comments");
+        return this.all("SELECT * FROM comments ORDER BY id DESC");
     }
 
     async getComment(id) {

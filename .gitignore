@@ -8,4 +8,4 @@ dist
 client/src/config.js
 
 server/config.js
-server/data/database.sqlite3
+server/data

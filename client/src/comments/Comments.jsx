@@ -30,7 +30,7 @@ export const Comment = ({comment}) => {
                 {comment.content.split("\n").map((paragraph, index) => (
                     <div className="text" key={index}>{paragraph}</div>
                 ))}
-                <div className="footer">{comment.author}</div>
+                <div className="footer">- {comment.author}</div>
             </div>
         </div>
     );

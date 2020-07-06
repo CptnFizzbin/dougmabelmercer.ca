@@ -21,9 +21,25 @@ apiRouter.get('/comments', async (req, res, next) => {
 })
 apiRouter.put('/comments', async (req, res, next) => {
     try {
-        const commentId = await database.addComment(req.body);
-        const comment = await database.getComment(commentId);
-        res.send({comment});
+        const newComment = req.body;
+        const errors = {};
+
+        if (newComment.author.trim() === "") {
+            errors.author = "Author is required";
+        }
+
+        if (newComment.content.trim() === "") {
+            errors.content = "Message is required";
+        }
+
+        if (Object.entries(errors).length >= 1) {
+            res.status(400);
+            res.send({errors});
+        } else {
+            const commentId = await database.addComment(newComment);
+            const comment = await database.getComment(commentId);
+            res.send({comment});
+        }
     } catch (error) {
         next(error);
     }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Comments from "./comments/Comments";
+import Comments from "./Comments";
 import Header from "./Header";
 import Obituaries from "./obituaries/Obituaries";
 

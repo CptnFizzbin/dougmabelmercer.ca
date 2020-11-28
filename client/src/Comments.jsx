@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-import ApiClient from "../api-client";
-import AddComment from "./AddComment.jsx";
+import ApiClient from "./api-client";
 
 import './Comments.scss';
 
@@ -14,7 +13,6 @@ const Comments = () => {
 
     return (
         <div className="comments">
-            <AddComment />
             {comments.map((comment) => <Comment key={comment.id} comment={comment}/>)}
         </div>
     );

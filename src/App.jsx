@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Comments from "./Comments";
 import Header from "./Header";
 import Obituaries from "./obituaries/Obituaries";
 
@@ -12,7 +11,6 @@ function App() {
       <Header/>
       <main>
         <Obituaries/>
-        <Comments/>
       </main>
     </div>
   );

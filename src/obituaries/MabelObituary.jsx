@@ -1,5 +1,7 @@
 import React from 'react';
 
+import mabelPortrait from '../images/mabel/portrait.jpg'
+
 const MabelObituary = () => (
     <div className="obituary mabel">
         <div className="surface">
@@ -7,7 +9,7 @@ const MabelObituary = () => (
                 Mabel Armorel Mercer
             </div>
             <div className="image">
-                <img src="/img/mabel/portrait.jpg" alt="Portrait of Mabel"/>
+                <img src={mabelPortrait} alt="Portrait of Mabel"/>
             </div>
             <div className="text">
                 Mercer, Mabel Armorel (nee Parsons) died peacefully at St. Mary’s Hospital in Kitchener on August

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import dougPortrait from '../images/doug/portrait.jpg';
+
 const DougObituary = () => (
     <div className="obituary doug">
         <div className="surface">
@@ -7,7 +9,7 @@ const DougObituary = () => (
                 Douglas William Mercer
             </div>
             <div className="image">
-                <img src="/img/doug/portrait.jpg" alt="Portrait of Doug"/>
+                <img src={dougPortrait} alt="Portrait of Doug"/>
             </div>
             <div className='text'>
                 Douglas William Mercer died gently and peacefully on Thursday July 2, 2020 at St. Mary’s Hospital,
